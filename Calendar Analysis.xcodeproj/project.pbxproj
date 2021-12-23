@@ -13,6 +13,7 @@
 		8D95BC972774A6B000CA83E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95BC962774A6B000CA83E7 /* Preview Assets.xcassets */; };
 		8D95BC992774A6B000CA83E7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC982774A6B000CA83E7 /* Persistence.swift */; };
 		8D95BC9C2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC9A2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld */; };
+		8D95BCA32774AA6100CA83E7 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BCA22774AA6100CA83E7 /* EventModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		8D95BC962774A6B000CA83E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D95BC982774A6B000CA83E7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		8D95BC9B2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calendar_Analysis.xcdatamodel; sourceTree = "<group>"; };
+		8D95BCA22774AA6100CA83E7 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				8D95BC982774A6B000CA83E7 /* Persistence.swift */,
 				8D95BC9A2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld */,
 				8D95BC952774A6B000CA83E7 /* Preview Content */,
+				8D95BCA22774AA6100CA83E7 /* EventModel.swift */,
 			);
 			path = "Calendar Analysis";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				8D95BC992774A6B000CA83E7 /* Persistence.swift in Sources */,
 				8D95BC922774A6AE00CA83E7 /* ContentView.swift in Sources */,
 				8D95BC902774A6AE00CA83E7 /* Calendar_AnalysisApp.swift in Sources */,
+				8D95BCA32774AA6100CA83E7 /* EventModel.swift in Sources */,
 				8D95BC9C2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +284,7 @@
 				DEVELOPMENT_TEAM = 385NJ9XLA7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "It is used to display events.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -309,6 +314,7 @@
 				DEVELOPMENT_TEAM = 385NJ9XLA7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "It is used to display events.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
