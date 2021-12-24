@@ -24,13 +24,14 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Calendar Analysys")
+                .font(.largeTitle)
             Picker("Calendar", selection: self.$selectCalendar, content: {
                 ForEach(0..<self.eventsModel.calendars.count) { index in
                     Text(self.eventsModel.calendars[index].title)
                         .tag(index)
                 }
             })
-                .pickerStyle(.wheel)
+                .pickerStyle(.menu)
             DatePicker("From", selection: self.$fromdate, displayedComponents: [.date])
                 .datePickerStyle(.compact)
             DatePicker("To", selection: self.$todate, displayedComponents: [.date])

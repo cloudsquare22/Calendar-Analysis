@@ -28,7 +28,6 @@ class EventsModel: ObservableObject {
     func actionAnalysis(from: Date, to: Date, calendar: EKCalendar) {
         let predicate = eventStore.predicateForEvents(withStart: from, end: to, calendars: [calendar])
         let events = eventStore.events(matching: predicate)
-        let alltime = to.timeIntervalSince(from)
         var sumtime: Double = 0.0
         for event in events {
             print(event.title!)
@@ -37,7 +36,20 @@ class EventsModel: ObservableObject {
                 sumtime = sumtime + diff
             }
         }
-        self.analysis = "\(sumtime / 60) min \(round(sumtime / alltime * 100)) %"
+        sumtime = sumtime / 60
+        var fromdc = Calendar.current.dateComponents(in: .current, from: from)
+        var todc = Calendar.current.dateComponents(in: .current, from: to)
+        fromdc.hour = 0
+        fromdc.minute = 0
+        fromdc.second = 0
+        todc.hour = 23
+        todc.minute = 59
+        todc.second = 59
+        let alltime = (todc.date!.timeIntervalSince(fromdc.date!) + 1.0) / 60
+        print(fromdc)
+        print(todc)
+        print("alltime:\(alltime)")
+        self.analysis = "\(sumtime) min \(round(sumtime / alltime * 100)) %"
     }
 
 }
