@@ -66,5 +66,18 @@ class EventsModel: ObservableObject {
         }
         return (resultFrom, resultTo)
     }
+    
+    func thisMonth() -> (Date, Date) {
+        var resultFrom = Date()
+        var resultTo = Date()
+        var fromdc = Calendar.current.dateComponents(in: .current, from: resultFrom)
+        fromdc.day = 1
+        var todc = Calendar.current.dateComponents(in: .current, from: resultFrom)
+        todc.month = todc.month! + 1
+        todc.day = 0
+        resultFrom = fromdc.date!
+        resultTo = todc.date!
+        return (resultFrom, resultTo)
+    }
 
 }

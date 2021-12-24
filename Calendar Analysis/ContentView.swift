@@ -40,6 +40,14 @@ struct ContentView: View {
                        label: {
                     Text("This week")
                 })
+                    .buttonStyle(.borderedProminent)
+                Button(action: {
+                    (self.fromdate, self.todate) = self.eventsModel.thisMonth()
+                },
+                       label: {
+                    Text("This month")
+                })
+                    .buttonStyle(.borderedProminent)
             }
             DatePicker("From", selection: self.$fromdate, displayedComponents: [.date])
                 .datePickerStyle(.compact)
