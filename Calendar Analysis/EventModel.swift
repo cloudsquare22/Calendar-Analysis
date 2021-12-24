@@ -80,4 +80,19 @@ class EventsModel: ObservableObject {
         return (resultFrom, resultTo)
     }
 
+    func thisYear() -> (Date, Date) {
+        var resultFrom = Date()
+        var resultTo = Date()
+        var fromdc = Calendar.current.dateComponents(in: .current, from: resultFrom)
+        fromdc.month = 1
+        fromdc.day = 1
+        fromdc.weekOfYear = 1
+        print(fromdc)
+        var todc = Calendar.current.dateComponents(in: .current, from: resultFrom)
+        todc.month = 12
+        todc.day = 31
+        resultFrom = fromdc.date!
+        resultTo = todc.date!
+        return (resultFrom, resultTo)
+    }
 }
