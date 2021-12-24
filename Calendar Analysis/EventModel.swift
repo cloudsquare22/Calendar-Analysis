@@ -26,7 +26,15 @@ class EventsModel: ObservableObject {
     }
     
     func actionAnalysis(from: Date, to: Date, calendar: EKCalendar) {
-        let predicate = eventStore.predicateForEvents(withStart: from, end: to, calendars: [calendar])
+        var fromdc = Calendar.current.dateComponents(in: .current, from: from)
+        var todc = Calendar.current.dateComponents(in: .current, from: to)
+        fromdc.hour = 0
+        fromdc.minute = 0
+        fromdc.second = 0
+        todc.hour = 23
+        todc.minute = 59
+        todc.second = 59
+        let predicate = eventStore.predicateForEvents(withStart: fromdc.date!, end: todc.date!, calendars: [calendar])
         let events = eventStore.events(matching: predicate)
         var sumtime: Double = 0.0
         for event in events {
@@ -37,19 +45,26 @@ class EventsModel: ObservableObject {
             }
         }
         sumtime = sumtime / 60
-        var fromdc = Calendar.current.dateComponents(in: .current, from: from)
-        var todc = Calendar.current.dateComponents(in: .current, from: to)
-        fromdc.hour = 0
-        fromdc.minute = 0
-        fromdc.second = 0
-        todc.hour = 23
-        todc.minute = 59
-        todc.second = 59
         let alltime = (todc.date!.timeIntervalSince(fromdc.date!) + 1.0) / 60
         print(fromdc)
         print(todc)
         print("alltime:\(alltime)")
         self.analysis = "\(sumtime) min \(round(sumtime / alltime * 100)) %"
+    }
+    
+    func thisWeek() -> (Date, Date) {
+        var resultFrom = Date()
+        let matchingMonday = DateComponents(weekday: 2)
+        let weekday = Calendar.current.component(.weekday, from: resultFrom)
+        if weekday != 2 {
+            resultFrom = Calendar.current.nextDate(after: resultFrom, matching: matchingMonday, matchingPolicy: .nextTime, direction: .backward)!
+        }
+        var resultTo = Date()
+        let matchingSunday = DateComponents(weekday: 1)
+        if weekday != 1 {
+            resultTo = Calendar.current.nextDate(after: resultFrom, matching: matchingSunday, matchingPolicy: .nextTime, direction: .forward)!
+        }
+        return (resultFrom, resultTo)
     }
 
 }
