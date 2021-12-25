@@ -14,8 +14,21 @@ class EventsModel: ObservableObject {
     @Published var analysis: String = ""
     @Published var firstWeekday: Int = 2
     
+    let userdefault = UserDefaults.standard
+
     init() {
         self.getCalendars()
+        self.load()
+    }
+
+    func load() {
+        if let firstWeekday = userdefault.object(forKey: "firstWeekday") as? Int {
+            self.firstWeekday = firstWeekday
+        }
+    }
+
+    func save() {
+        self.userdefault.set(self.firstWeekday, forKey: "firstWeekday")
     }
 
     func getCalendars() {

@@ -23,6 +23,9 @@ struct SettingView: View {
                     }, label: {
                         Text("1st weekday")
                     })
+                        .onChange(of: self.eventsModel.firstWeekday) { value in
+                            self.eventsModel.save()
+                        }
                 }
                 Section(header: Text("About")) {
                     VStack {
