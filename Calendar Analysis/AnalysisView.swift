@@ -28,7 +28,7 @@ struct AnalysisView: View {
                 .pickerStyle(.menu)
             HStack {
                 Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.lastWeek()
+                    (self.fromdate, self.todate) = self.eventsModel.thisWeek(interval: 604_800)
                 },
                        label: {
                     Text("Last week")
