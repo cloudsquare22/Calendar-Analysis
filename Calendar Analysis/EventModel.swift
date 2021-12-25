@@ -55,14 +55,16 @@ class EventsModel: ObservableObject {
     
     func thisWeek(interval: Double = 0.0) -> (Date, Date) {
         var resultFrom = Date() - TimeInterval(interval)
-        let matchingMonday = DateComponents(weekday: 2)
+        let matchingMonday = DateComponents(weekday: self.firstWeekday)
         let weekday = Calendar.current.component(.weekday, from: resultFrom)
-        if weekday != 2 {
+        if weekday != self.firstWeekday {
             resultFrom = Calendar.current.nextDate(after: resultFrom, matching: matchingMonday, matchingPolicy: .nextTime, direction: .backward)!
         }
+        let endweekday = (self.firstWeekday + 7 - 1) == 7 ? 7 : (self.firstWeekday + 7 - 1) % 7
+        print("\(self.firstWeekday)...\(endweekday)")
         var resultTo = Date() - TimeInterval(interval)
-        let matchingSunday = DateComponents(weekday: 1)
-        if weekday != 1 {
+        let matchingSunday = DateComponents(weekday: endweekday)
+        if weekday != endweekday {
             resultTo = Calendar.current.nextDate(after: resultFrom, matching: matchingSunday, matchingPolicy: .nextTime, direction: .forward)!
         }
         return (resultFrom, resultTo)
