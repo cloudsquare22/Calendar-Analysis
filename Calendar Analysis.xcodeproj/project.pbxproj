@@ -8,23 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		8D95BC902774A6AE00CA83E7 /* Calendar_AnalysisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC8F2774A6AE00CA83E7 /* Calendar_AnalysisApp.swift */; };
-		8D95BC922774A6AE00CA83E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC912774A6AE00CA83E7 /* ContentView.swift */; };
+		8D95BC922774A6AE00CA83E7 /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC912774A6AE00CA83E7 /* AnalysisView.swift */; };
 		8D95BC942774A6B000CA83E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95BC932774A6B000CA83E7 /* Assets.xcassets */; };
 		8D95BC972774A6B000CA83E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95BC962774A6B000CA83E7 /* Preview Assets.xcassets */; };
 		8D95BC992774A6B000CA83E7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC982774A6B000CA83E7 /* Persistence.swift */; };
 		8D95BC9C2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC9A2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld */; };
 		8D95BCA32774AA6100CA83E7 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BCA22774AA6100CA83E7 /* EventModel.swift */; };
+		8D95BCA52777D3AC00CA83E7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BCA42777D3AC00CA83E7 /* MainView.swift */; };
+		8D95BCA72777D3EB00CA83E7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BCA62777D3EB00CA83E7 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D95BC8C2774A6AE00CA83E7 /* Calendar Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calendar Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D95BC8F2774A6AE00CA83E7 /* Calendar_AnalysisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_AnalysisApp.swift; sourceTree = "<group>"; };
-		8D95BC912774A6AE00CA83E7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8D95BC912774A6AE00CA83E7 /* AnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
 		8D95BC932774A6B000CA83E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D95BC962774A6B000CA83E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8D95BC982774A6B000CA83E7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		8D95BC9B2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calendar_Analysis.xcdatamodel; sourceTree = "<group>"; };
 		8D95BCA22774AA6100CA83E7 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		8D95BCA42777D3AC00CA83E7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8D95BCA62777D3EB00CA83E7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +62,14 @@
 			isa = PBXGroup;
 			children = (
 				8D95BC8F2774A6AE00CA83E7 /* Calendar_AnalysisApp.swift */,
-				8D95BC912774A6AE00CA83E7 /* ContentView.swift */,
+				8D95BC912774A6AE00CA83E7 /* AnalysisView.swift */,
 				8D95BC932774A6B000CA83E7 /* Assets.xcassets */,
 				8D95BC982774A6B000CA83E7 /* Persistence.swift */,
 				8D95BC9A2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld */,
 				8D95BC952774A6B000CA83E7 /* Preview Content */,
 				8D95BCA22774AA6100CA83E7 /* EventModel.swift */,
+				8D95BCA42777D3AC00CA83E7 /* MainView.swift */,
+				8D95BCA62777D3EB00CA83E7 /* SettingView.swift */,
 			);
 			path = "Calendar Analysis";
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D95BC992774A6B000CA83E7 /* Persistence.swift in Sources */,
-				8D95BC922774A6AE00CA83E7 /* ContentView.swift in Sources */,
+				8D95BCA52777D3AC00CA83E7 /* MainView.swift in Sources */,
+				8D95BC922774A6AE00CA83E7 /* AnalysisView.swift in Sources */,
+				8D95BCA72777D3EB00CA83E7 /* SettingView.swift in Sources */,
 				8D95BC902774A6AE00CA83E7 /* Calendar_AnalysisApp.swift in Sources */,
 				8D95BCA32774AA6100CA83E7 /* EventModel.swift in Sources */,
 				8D95BC9C2774A6B000CA83E7 /* Calendar_Analysis.xcdatamodeld in Sources */,
