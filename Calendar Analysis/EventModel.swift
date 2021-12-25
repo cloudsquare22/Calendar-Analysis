@@ -12,6 +12,7 @@ class EventsModel: ObservableObject {
     let eventStore = EKEventStore()
     @Published var calendars: [EKCalendar] = []
     @Published var analysis: String = ""
+    @Published var firstWeekday: Int = 2
     
     init() {
         self.getCalendars()

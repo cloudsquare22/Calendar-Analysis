@@ -8,9 +8,53 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var eventsModel: EventsModel
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        NavigationView {
+            Form {
+                Section(header: Label("Calendar", systemImage: "calendar")) {
+                    Picker(selection: self.$eventsModel.firstWeekday, content: {
+                        ForEach(1..<8) { index in
+                            Text(Calendar.current.weekdaySymbols[index - 1])
+                                .tag(index)
+                        }
+                    }, label: {
+                        Text("1st weekday")
+                    })
+                }
+                Section(header: Text("About")) {
+                    VStack {
+                        HStack {
+                            Spacer()
+//                            Image("neCal")
+//                                .cornerRadius(16)
+//                                .padding(8.0)
+                            VStack(){
+                                Text("Calendar Analysis")
+                                    .font(.largeTitle)
+                                Text("Version \(version)")
+                            }
+                            .padding(8.0)
+                            Spacer()
+                        }
+                        HStack {
+                            Spacer()
+                            Image("cloudsquare")
+                            Text("©️ 2021 cloudsquare.jp")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            .listStyle(PlainListStyle())
+//            .padding(8)
+            .navigationTitle("Setting")
+            .navigationBarTitleDisplayMode(.large)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())    }
 }
 
 struct SettingView_Previews: PreviewProvider {
