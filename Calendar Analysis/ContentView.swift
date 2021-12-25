@@ -35,6 +35,13 @@ struct ContentView: View {
                 .pickerStyle(.menu)
             HStack {
                 Button(action: {
+                    (self.fromdate, self.todate) = self.eventsModel.lastWeek()
+                },
+                       label: {
+                    Text("Last week")
+                })
+                    .buttonStyle(.borderedProminent)
+                Button(action: {
                     (self.fromdate, self.todate) = self.eventsModel.thisWeek()
                 },
                        label: {

@@ -52,6 +52,22 @@ class EventsModel: ObservableObject {
         self.analysis = "\(sumtime) min \(round(sumtime / alltime * 100)) %"
     }
     
+    func lastWeek() -> (Date, Date) {
+        print("1st weekday:\(Calendar.autoupdatingCurrent.firstWeekday)")
+        var resultFrom = Date() - TimeInterval(604_800)
+        let matchingMonday = DateComponents(weekday: 2)
+        let weekday = Calendar.current.component(.weekday, from: resultFrom)
+        if weekday != 2 {
+            resultFrom = Calendar.current.nextDate(after: resultFrom, matching: matchingMonday, matchingPolicy: .nextTime, direction: .backward)!
+        }
+        var resultTo = Date() - TimeInterval(604_800)
+        let matchingSunday = DateComponents(weekday: 1)
+        if weekday != 1 {
+            resultTo = Calendar.current.nextDate(after: resultFrom, matching: matchingSunday, matchingPolicy: .nextTime, direction: .forward)!
+        }
+        return (resultFrom, resultTo)
+    }
+
     func thisWeek() -> (Date, Date) {
         var resultFrom = Date()
         let matchingMonday = DateComponents(weekday: 2)
