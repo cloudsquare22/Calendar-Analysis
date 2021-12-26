@@ -20,7 +20,7 @@ struct AnalysisView: View {
             Text("Calendar Analysys")
                 .font(.largeTitle)
             Picker("Calendar", selection: self.$selectCalendar, content: {
-                ForEach(0..<self.eventsModel.calendars.count) { index in
+                ForEach(0..<self.eventsModel.calendars.count, id: \.self) { index in
                     Text(self.eventsModel.calendars[index].title)
                         .tag(index)
                 }

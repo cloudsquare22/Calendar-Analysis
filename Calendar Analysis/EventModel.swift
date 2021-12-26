@@ -40,7 +40,13 @@ class EventsModel: ObservableObject {
         guard EKEventStore.authorizationStatus(for: .event) == .authorized else {
             return
         }
-        self.calendars = eventStore.calendars(for: .event)
+        let calendars = eventStore.calendars(for: .event)
+        print(calendars)
+        for calendar in calendars {
+            print(calendar.title)
+            print(calendar.type.rawValue)
+        }
+        self.calendars = calendars.filter({ c in c.type.rawValue < 4 }).sorted(by: {(c1, c2) in c1.title < c2.title})
         print(self.calendars)
     }
     
