@@ -17,6 +17,11 @@ class EventsModel: ObservableObject {
     let userdefault = UserDefaults.standard
 
     init() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(forName: .EKEventStoreChanged, object: eventStore, queue: nil, using: { notification in
+            print("EKEventStoreChanged")
+            self.getCalendars()
+        })
         self.getCalendars()
         self.load()
     }
