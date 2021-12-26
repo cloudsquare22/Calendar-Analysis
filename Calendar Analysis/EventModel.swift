@@ -11,7 +11,7 @@ import EventKit
 class EventsModel: ObservableObject {
     let eventStore = EKEventStore()
     @Published var calendars: [EKCalendar] = []
-    @Published var analysis: String = ""
+    @Published var analysis: Analysis = Analysis()
     @Published var firstWeekday: Int = 2
     
     let userdefault = UserDefaults.standard
@@ -63,7 +63,10 @@ class EventsModel: ObservableObject {
         print(fromdc)
         print(todc)
         print("alltime:\(alltime)")
-        self.analysis = "\(sumtime) min \(round(sumtime / alltime * 100)) %"
+        self.analysis.totaltimemin = sumtime
+        self.analysis.alltimemin = alltime
+        self.analysis.percent = sumtime / alltime * 100
+        self.analysis.count = events.count
     }
     
     func thisWeek(interval: Double = 0.0) -> (Date, Date) {
@@ -111,4 +114,11 @@ class EventsModel: ObservableObject {
         resultTo = todc.date!
         return (resultFrom, resultTo)
     }
+}
+
+struct Analysis {
+    var totaltimemin: Double = 0.0
+    var alltimemin: Double = 0.0
+    var percent: Double = 0.0
+    var count: Int = 0
 }

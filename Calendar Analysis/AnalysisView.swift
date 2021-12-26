@@ -71,7 +71,7 @@ struct AnalysisView: View {
                 Text("Analysis")
             })
                 .buttonStyle(.borderedProminent)
-            Text(self.eventsModel.analysis)
+            AnalysisResultView()
         }
         .alert(isPresented: self.$isErrorFromto) {
                 Alert(
@@ -86,5 +86,28 @@ struct AnalysisView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         AnalysisView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
+
+struct AnalysisResultView: View {
+    @EnvironmentObject var eventsModel: EventsModel
+    
+    var body: some View {
+        HStack {
+            Text("Total time")
+            Spacer()
+            Text(String(format: "%.0f", self.eventsModel.analysis.totaltimemin) + " min")
+            Text(String(format: "%.1f", self.eventsModel.analysis.percent) + "%")
+        }
+        HStack {
+            Text("All time")
+            Spacer()
+            Text(String(format: "%.0f", self.eventsModel.analysis.alltimemin) + " min")
+        }
+        HStack {
+            Text("Event count")
+            Spacer()
+            Text(String(format: "%d", self.eventsModel.analysis.count))
+        }
     }
 }
