@@ -106,6 +106,7 @@ class EventsModel: ObservableObject {
         fromdc.month = 1
         fromdc.day = 1
         fromdc.weekOfYear = 1
+        fromdc.yearForWeekOfYear = fromdc.year
         print(fromdc)
         var todc = Calendar.current.dateComponents(in: .current, from: resultFrom)
         todc.month = 12
