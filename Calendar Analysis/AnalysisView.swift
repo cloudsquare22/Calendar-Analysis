@@ -49,6 +49,13 @@ struct AnalysisView: View {
                     (self.fromdate, self.todate) = self.eventsModel.thisMonth()
                 },
                        label: {
+                    Text("Last month")
+                })
+                    .buttonStyle(.borderedProminent)
+                Button(action: {
+                    (self.fromdate, self.todate) = self.eventsModel.thisMonth()
+                },
+                       label: {
                     Text("This month")
                 })
                     .buttonStyle(.borderedProminent)

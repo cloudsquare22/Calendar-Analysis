@@ -103,10 +103,11 @@ class EventsModel: ObservableObject {
         return (resultFrom, resultTo)
     }
     
-    func thisMonth() -> (Date, Date) {
+    func thisMonth(isLastMonth: Bool = false) -> (Date, Date) {
         var resultFrom = Date()
         var resultTo = Date()
         var fromdc = Calendar.current.dateComponents(in: .current, from: resultFrom)
+        fromdc.month = fromdc.month!
         fromdc.day = 1
         var todc = Calendar.current.dateComponents(in: .current, from: resultFrom)
         todc.month = todc.month! + 1
