@@ -50,7 +50,7 @@ class EventsModel: ObservableObject {
         print(self.calendars)
     }
     
-    func actionAnalysis(from: Date, to: Date, calendar: EKCalendar) {
+    func actionAnalysis(from: Date, to: Date, calendar: EKCalendar, filterString: String = "") {
         var fromdc = Calendar.current.dateComponents(in: .current, from: from)
         var todc = Calendar.current.dateComponents(in: .current, from: to)
         fromdc.hour = 0
@@ -62,12 +62,18 @@ class EventsModel: ObservableObject {
         let predicate = eventStore.predicateForEvents(withStart: fromdc.date!, end: todc.date!, calendars: [calendar])
         let events = eventStore.events(matching: predicate)
         var sumtime: Double = 0.0
+        var count: Int = 0
         for event in events {
             print(event.title!)
-            if event.isAllDay == false {
-                let diff = event.endDate.timeIntervalSince(event.startDate)
-                sumtime = sumtime + diff
+            if event.isAllDay == true {
+                continue
             }
+            if filterString.isEmpty == false, event.title.contains(filterString) == false {
+                continue
+            }
+            let diff = event.endDate.timeIntervalSince(event.startDate)
+            sumtime = sumtime + diff
+            count = count + 1
         }
         sumtime = sumtime / 60
         let alltime = (todc.date!.timeIntervalSince(fromdc.date!) + 1.0) / 60
@@ -77,7 +83,7 @@ class EventsModel: ObservableObject {
         self.analysis.totaltimemin = sumtime
         self.analysis.alltimemin = alltime
         self.analysis.percent = sumtime / alltime * 100
-        self.analysis.count = events.count
+        self.analysis.count = count
     }
     
     func thisWeek(interval: Double = 0.0) -> (Date, Date) {

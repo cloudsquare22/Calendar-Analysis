@@ -14,18 +14,22 @@ struct AnalysisView: View {
     @State var fromdate: Date = Date()
     @State var todate: Date = Date()
     @State var isErrorFromto = false
+    @State var filterString: String = ""
 
     var body: some View {
         VStack {
             Text("Calendar Analysys")
                 .font(.largeTitle)
-            Picker("Calendar", selection: self.$selectCalendar, content: {
-                ForEach(0..<self.eventsModel.calendars.count, id: \.self) { index in
-                    Text(self.eventsModel.calendars[index].title)
-                        .tag(index)
-                }
-            })
-                .pickerStyle(.menu)
+            HStack {
+                Image(systemName: "calendar")
+                Picker("Calendar", selection: self.$selectCalendar, content: {
+                    ForEach(0..<self.eventsModel.calendars.count, id: \.self) { index in
+                        Text(self.eventsModel.calendars[index].title)
+                            .tag(index)
+                    }
+                })
+                    .pickerStyle(.menu)
+            }
             HStack {
                 Button(action: {
                     (self.fromdate, self.todate) = self.eventsModel.thisWeek(interval: 604_800)
@@ -60,9 +64,16 @@ struct AnalysisView: View {
                 .datePickerStyle(.compact)
             DatePicker("To", selection: self.$todate, displayedComponents: [.date])
                 .datePickerStyle(.compact)
+            HStack {
+                Image(systemName: "magnifyingglass")
+                Spacer()
+                TextField(text: self.$filterString, prompt: Text("Filter string"), label: {
+                    
+                })
+            }
             Button(action: {
                 if self.fromdate <= self.todate {
-                    self.eventsModel.actionAnalysis(from: fromdate, to: todate, calendar: self.eventsModel.calendars[self.selectCalendar])
+                    self.eventsModel.actionAnalysis(from: fromdate, to: todate, calendar: self.eventsModel.calendars[self.selectCalendar], filterString: self.filterString)
                 }
                 else {
                     self.isErrorFromto = true
