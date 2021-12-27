@@ -18,7 +18,7 @@ struct AnalysisView: View {
 
     var body: some View {
         VStack {
-            Text("Calendar Analysys")
+            Text("Calendar Analysis")
                 .font(.largeTitle)
             HStack {
                 Image(systemName: "calendar")
