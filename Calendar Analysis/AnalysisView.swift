@@ -30,49 +30,55 @@ struct AnalysisView: View {
                 })
                     .pickerStyle(.menu)
             }
-            HStack {
-                Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.thisWeek(interval: 604_800)
-                },
-                       label: {
-                    Text("Last week")
-                })
-                    .buttonStyle(.borderedProminent)
-                Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.thisWeek()
-                },
-                       label: {
-                    Text("This week")
-                })
-                    .buttonStyle(.borderedProminent)
-                Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.thisMonth(isLastMonth: true)
-                },
-                       label: {
-                    Text("Last month")
-                })
-                    .buttonStyle(.borderedProminent)
-                Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.thisMonth()
-                },
-                       label: {
-                    Text("This month")
-                })
-                    .buttonStyle(.borderedProminent)
-                Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.thisYear(isLastYear: true)
-                },
-                       label: {
-                    Text("Last year")
-                })
-                    .buttonStyle(.borderedProminent)
-                Button(action: {
-                    (self.fromdate, self.todate) = self.eventsModel.thisYear()
-                },
-                       label: {
-                    Text("This year")
-                })
-                    .buttonStyle(.borderedProminent)
+            VStack {
+                HStack {
+                    Button(action: {
+                        (self.fromdate, self.todate) = self.eventsModel.thisWeek(interval: 604_800)
+                    },
+                           label: {
+                        Text("Last week")
+                    })
+                        .buttonStyle(.borderedProminent)
+                    Button(action: {
+                        (self.fromdate, self.todate) = self.eventsModel.thisWeek()
+                    },
+                           label: {
+                        Text("This week")
+                    })
+                        .buttonStyle(.borderedProminent)
+                }
+                HStack {
+                    Button(action: {
+                        (self.fromdate, self.todate) = self.eventsModel.thisMonth(isLastMonth: true)
+                    },
+                           label: {
+                        Text("Last month")
+                    })
+                        .buttonStyle(.borderedProminent)
+                    Button(action: {
+                        (self.fromdate, self.todate) = self.eventsModel.thisMonth()
+                    },
+                           label: {
+                        Text("This month")
+                    })
+                        .buttonStyle(.borderedProminent)
+                }
+                HStack {
+                    Button(action: {
+                        (self.fromdate, self.todate) = self.eventsModel.thisYear(isLastYear: true)
+                    },
+                           label: {
+                        Text("Last year")
+                    })
+                        .buttonStyle(.borderedProminent)
+                    Button(action: {
+                        (self.fromdate, self.todate) = self.eventsModel.thisYear()
+                    },
+                           label: {
+                        Text("This year")
+                    })
+                        .buttonStyle(.borderedProminent)
+                }
             }
             DatePicker("From", selection: self.$fromdate, displayedComponents: [.date])
                 .datePickerStyle(.compact)
