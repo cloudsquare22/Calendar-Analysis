@@ -60,6 +60,13 @@ struct AnalysisView: View {
                 })
                     .buttonStyle(.borderedProminent)
                 Button(action: {
+                    (self.fromdate, self.todate) = self.eventsModel.thisYear(isLastYear: true)
+                },
+                       label: {
+                    Text("Last year")
+                })
+                    .buttonStyle(.borderedProminent)
+                Button(action: {
                     (self.fromdate, self.todate) = self.eventsModel.thisYear()
                 },
                        label: {

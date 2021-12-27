@@ -126,18 +126,30 @@ class EventsModel: ObservableObject {
         return (resultFrom, resultTo)
     }
 
-    func thisYear() -> (Date, Date) {
+    func thisYear(isLastYear: Bool = false) -> (Date, Date) {
         var resultFrom = Date()
         var resultTo = Date()
         var fromdc = Calendar.current.dateComponents(in: .current, from: resultFrom)
         fromdc.month = 1
         fromdc.day = 1
         fromdc.weekOfYear = 1
-        fromdc.yearForWeekOfYear = fromdc.year
         print(fromdc)
         var todc = Calendar.current.dateComponents(in: .current, from: resultFrom)
         todc.month = 12
         todc.day = 31
+        if isLastYear == false {
+            fromdc.yearForWeekOfYear = fromdc.year
+        }
+        else {
+            fromdc.year = fromdc.year! - 1
+            fromdc.yearForWeekOfYear = fromdc.year
+            todc.year = todc.year
+            todc.yearForWeekOfYear = todc.year
+            todc.month = 1
+            todc.day = 0
+            print(fromdc)
+            print(todc)
+        }
         resultFrom = fromdc.date!
         resultTo = todc.date!
         return (resultFrom, resultTo)
