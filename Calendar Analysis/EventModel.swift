@@ -107,11 +107,20 @@ class EventsModel: ObservableObject {
         var resultFrom = Date()
         var resultTo = Date()
         var fromdc = Calendar.current.dateComponents(in: .current, from: resultFrom)
-        fromdc.month = fromdc.month!
-        fromdc.day = 1
         var todc = Calendar.current.dateComponents(in: .current, from: resultFrom)
-        todc.month = todc.month! + 1
-        todc.day = 0
+        if isLastMonth == false {
+            fromdc.month = fromdc.month!
+            fromdc.day = 1
+            todc.month = todc.month! + 1
+            todc.day = 0
+        }
+        else {
+            fromdc.month = fromdc.month! - 1 == 0 ? 12 : fromdc.month! - 1
+            fromdc.day = 1
+            fromdc.year = fromdc.month! - 1 == 0 ? fromdc.year! - 1 : fromdc.year
+            todc.month = todc.month!
+            todc.day = 0
+        }
         resultFrom = fromdc.date!
         resultTo = todc.date!
         return (resultFrom, resultTo)
