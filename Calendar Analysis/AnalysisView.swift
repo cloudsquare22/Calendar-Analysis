@@ -80,17 +80,24 @@ struct AnalysisView: View {
                         .buttonStyle(.borderedProminent)
                 }
             }
-            DatePicker("From", selection: self.$fromdate, displayedComponents: [.date])
-                .datePickerStyle(.compact)
-            DatePicker("To", selection: self.$todate, displayedComponents: [.date])
-                .datePickerStyle(.compact)
-            HStack {
-                Image(systemName: "magnifyingglass")
-                Spacer()
-                TextField(text: self.$filterString, prompt: Text("Filter string"), label: {
-                    
-                })
+            .padding(EdgeInsets(top: 8.0, leading: 0.0, bottom: 8.0, trailing: 0.0))
+            VStack {
+                HStack {
+                    DatePicker("From", selection: self.$fromdate, displayedComponents: [.date])
+                        .datePickerStyle(.compact)
+                    Image(systemName: "arrowshape.right")
+                    DatePicker("To", selection: self.$todate, displayedComponents: [.date])
+                        .datePickerStyle(.compact)
+                }
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    Spacer()
+                    TextField(text: self.$filterString, prompt: Text("Filter string"), label: {
+                        
+                    })
+                }
             }
+            .padding(EdgeInsets(top: 8.0, leading: 0.0, bottom: 8.0, trailing: 0.0))
             Button(action: {
                 if self.fromdate <= self.todate {
                     self.eventsModel.actionAnalysis(from: fromdate, to: todate, calendar: self.eventsModel.calendars[self.selectCalendar], filterString: self.filterString)
@@ -100,18 +107,20 @@ struct AnalysisView: View {
                 }
             }, label: {
                 Text("Analysis")
+                    .font(.title3)
+                    .padding(EdgeInsets(top: 8.0, leading: 16.0, bottom: 8.0, trailing: 16.0))
             })
-                .buttonStyle(.borderedProminent)
+            .buttonStyle(.borderedProminent)
             AnalysisResultView()
+                .padding(EdgeInsets(top: 8.0, leading: 0.0, bottom: 8.0, trailing: 0.0))
         }
+        .padding(16.0)
         .alert(isPresented: self.$isErrorFromto) {
                 Alert(
                     title: Text("Date"),
                     message: Text("from > to"))
         }
     }
-        
-
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -124,21 +133,23 @@ struct AnalysisResultView: View {
     @EnvironmentObject var eventsModel: EventsModel
     
     var body: some View {
-        HStack {
-            Text("Total time")
-            Spacer()
-            Text(String(format: "%.0f", self.eventsModel.analysis.totaltimemin) + " min")
-            Text(String(format: "%.1f", self.eventsModel.analysis.percent) + "%")
-        }
-        HStack {
-            Text("All time")
-            Spacer()
-            Text(String(format: "%.0f", self.eventsModel.analysis.alltimemin) + " min")
-        }
-        HStack {
-            Text("Event count")
-            Spacer()
-            Text(String(format: "%d", self.eventsModel.analysis.count))
+        VStack {
+            HStack {
+                Text("Total time")
+                Spacer()
+                Text(String(format: "%.0f", self.eventsModel.analysis.totaltimemin) + " min")
+                Text(String(format: "%.1f", self.eventsModel.analysis.percent) + "%")
+            }
+            HStack {
+                Text("All time")
+                Spacer()
+                Text(String(format: "%.0f", self.eventsModel.analysis.alltimemin) + " min")
+            }
+            HStack {
+                Text("Event count")
+                Spacer()
+                Text(String(format: "%d", self.eventsModel.analysis.count))
+            }
         }
     }
 }
