@@ -13,9 +13,15 @@ struct MyProductView: View {
     
     @State
     var thisWeekAnalysis: Analysis = Analysis()
+    
+    @State
+    var thisWeekDate: String = ""
 
     @State
     var lastWeekAnalysis: Analysis = Analysis()
+
+    @State
+    var lastWeekDate: String = ""
 
     fileprivate func updateAnalysis() {
         let thisWeek = self.eventsModel.thisWeek()
@@ -24,10 +30,22 @@ struct MyProductView: View {
                                                                 to: thisWeek.1,
                                                                 calendar: self.eventsModel.calendars.last!)
         self.thisWeekAnalysis.alltimemin = 60 * 20
+        self.thisWeekDate = self.dispDate(from: thisWeek.0, to: thisWeek.1)
         self.lastWeekAnalysis = self.eventsModel.actionAnalysis(from: lastWeek.0,
                                                                 to: lastWeek.1,
                                                                 calendar: self.eventsModel.calendars.last!)
         self.lastWeekAnalysis.alltimemin = 60 * 20
+        self.lastWeekDate = self.dispDate(from: lastWeek.0, to: lastWeek.1)
+     }
+    
+    fileprivate func dispDate(from: Date, to: Date) -> String {
+        let dateFormatterFrom = DateFormatter()
+        dateFormatterFrom.dateFormat = "M/d 〜"
+        dateFormatterFrom.locale = .current
+        let dateFormatterTo = DateFormatter()
+        dateFormatterTo.dateFormat = " M/d"
+        dateFormatterTo.locale = .current
+        return dateFormatterFrom.string(from: from) + dateFormatterTo.string(from: to)
     }
     
     var body: some View {
@@ -44,8 +62,8 @@ struct MyProductView: View {
                 Text("Last week")
                     .font(.title3)
                     .foregroundStyle(.orange)
-                Text("\(String(format: "%.0f", self.lastWeekAnalysis.totaltimemin)) min")
-                Text(String(format: "%.1f", self.lastWeekAnalysis.percent) + "%")
+                Text(self.lastWeekDate)
+                Text("\(String(format: "%.0f", self.lastWeekAnalysis.totaltimemin)) min (\(String(format: "%.1f", self.lastWeekAnalysis.percent))%)")
                 Text("\(self.lastWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
                     .font(.largeTitle)
                 ProgressView(value: self.lastWeekAnalysis.totaltimemin,
@@ -61,8 +79,8 @@ struct MyProductView: View {
                 Text("This week")
                     .font(.title3)
                     .foregroundStyle(.green)
-                Text("\(String(format: "%.0f", self.thisWeekAnalysis.totaltimemin)) min")
-                Text(String(format: "%.1f", self.thisWeekAnalysis.percent) + "%")
+                Text(self.thisWeekDate)
+                Text("\(String(format: "%.0f", self.thisWeekAnalysis.totaltimemin)) min (\(String(format: "%.1f", self.thisWeekAnalysis.percent))%)")
                 Text("\(self.thisWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
                     .font(.largeTitle)
                 ProgressView(value: self.thisWeekAnalysis.totaltimemin,
