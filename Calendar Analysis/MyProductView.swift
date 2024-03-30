@@ -46,6 +46,8 @@ struct MyProductView: View {
                     .foregroundStyle(.orange)
                 Text("\(String(format: "%.0f", self.lastWeekAnalysis.totaltimemin)) min")
                 Text(String(format: "%.1f", self.lastWeekAnalysis.percent) + "%")
+                Text("\(self.lastWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
+                    .font(.largeTitle)
                 ProgressView(value: self.lastWeekAnalysis.totaltimemin,
                              total: self.lastWeekAnalysis.alltimemin)
                 .tint(.orange)
@@ -61,6 +63,8 @@ struct MyProductView: View {
                     .foregroundStyle(.green)
                 Text("\(String(format: "%.0f", self.thisWeekAnalysis.totaltimemin)) min")
                 Text(String(format: "%.1f", self.thisWeekAnalysis.percent) + "%")
+                Text("\(self.thisWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
+                    .font(.largeTitle)
                 ProgressView(value: self.thisWeekAnalysis.totaltimemin,
                              total: self.thisWeekAnalysis.alltimemin)
                 .tint(.green)
