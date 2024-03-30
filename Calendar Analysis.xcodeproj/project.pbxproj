@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D8076F62BB82A4900A4C406 /* MyProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8076F52BB82A4900A4C406 /* MyProductView.swift */; };
 		8D95BC902774A6AE00CA83E7 /* Calendar_AnalysisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC8F2774A6AE00CA83E7 /* Calendar_AnalysisApp.swift */; };
 		8D95BC922774A6AE00CA83E7 /* AnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95BC912774A6AE00CA83E7 /* AnalysisView.swift */; };
 		8D95BC942774A6B000CA83E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95BC932774A6B000CA83E7 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D8076F52BB82A4900A4C406 /* MyProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProductView.swift; sourceTree = "<group>"; };
 		8D95BC8C2774A6AE00CA83E7 /* Calendar Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calendar Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D95BC8F2774A6AE00CA83E7 /* Calendar_AnalysisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar_AnalysisApp.swift; sourceTree = "<group>"; };
 		8D95BC912774A6AE00CA83E7 /* AnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				8D95BCA22774AA6100CA83E7 /* EventModel.swift */,
 				8D95BCA42777D3AC00CA83E7 /* MainView.swift */,
 				8D95BCA62777D3EB00CA83E7 /* SettingView.swift */,
+				8D8076F52BB82A4900A4C406 /* MyProductView.swift */,
 			);
 			path = "Calendar Analysis";
 			sourceTree = "<group>";
@@ -110,7 +113,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					8D95BC8B2774A6AE00CA83E7 = {
 						CreatedOnToolsVersion = 13.2;
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8076F62BB82A4900A4C406 /* MyProductView.swift in Sources */,
 				8D95BC992774A6B000CA83E7 /* Persistence.swift in Sources */,
 				8D95BCA52777D3AC00CA83E7 /* MainView.swift in Sources */,
 				8D95BC922774A6AE00CA83E7 /* AnalysisView.swift in Sources */,
@@ -202,6 +206,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -263,6 +268,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -300,11 +306,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.cloudsquare.ios.Calendar-Analysis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -332,11 +339,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.cloudsquare.ios.Calendar-Analysis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

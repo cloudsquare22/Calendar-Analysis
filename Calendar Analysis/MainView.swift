@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var eventsModel: EventsModel
-    @State private var selection = 0
+    @State private var selection = 22
 
     var body: some View {
         TabView(selection: $selection) {
@@ -18,6 +18,11 @@ struct MainView: View {
                     Label("Analysis", systemImage: "chart.line.uptrend.xyaxis")
                 }
                 .tag(0)
+            MyProductView()
+                .tabItem {
+                    Label("cloudsquare", image: "custom.keyboard.badge.clock")
+                }
+                .tag(22)
             SettingView()
                 .tabItem {
                     Label("Setting", systemImage: "gear")
