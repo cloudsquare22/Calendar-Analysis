@@ -37,7 +37,7 @@ class EventsModel: ObservableObject {
     }
 
     func getCalendars() {
-        guard EKEventStore.authorizationStatus(for: .event) == .authorized else {
+        guard EKEventStore.authorizationStatus(for: .event) == .fullAccess else {
             return
         }
         let calendars = eventStore.calendars(for: .event)

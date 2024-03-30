@@ -23,7 +23,7 @@ struct SettingView: View {
                     }, label: {
                         Text("1st weekday")
                     })
-                        .onChange(of: self.eventsModel.firstWeekday) { value in
+                        .onChange(of: self.eventsModel.firstWeekday) { old, new in
                             self.eventsModel.save()
                         }
                 }

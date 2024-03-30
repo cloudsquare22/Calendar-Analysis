@@ -23,11 +23,16 @@ struct Calendar_AnalysisApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if EKEventStore.authorizationStatus(for: .event) != .authorized {
+        if EKEventStore.authorizationStatus(for: .event) != .fullAccess {
             let eventStore = EKEventStore()
-            eventStore.requestAccess(to: .event) { (access, _) in
-                print("EKEventStore requestAccess: \(access)")
-            }
+            eventStore.requestFullAccessToEvents(completion: { (granted, error) in
+                if granted {
+                    print("Accessible")
+                }
+                else {
+                    print("Access denied")
+                }
+            })
         }
         return true
     }
