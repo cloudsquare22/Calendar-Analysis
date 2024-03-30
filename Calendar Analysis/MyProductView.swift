@@ -48,6 +48,18 @@ struct MyProductView: View {
         return dateFormatterFrom.string(from: from) + dateFormatterTo.string(from: to)
     }
     
+    fileprivate func changeKaomoji(totaltimemin: Double) -> String {
+        var kaomoji: String = "😵"
+        if totaltimemin >= 1200 {
+            kaomoji = "😀"
+        }
+        else if totaltimemin >= 600 {
+            kaomoji = "😣"
+
+        }
+        return kaomoji
+    }
+    
     var body: some View {
         VStack {
             Spacer()
@@ -63,7 +75,7 @@ struct MyProductView: View {
                     .font(.title3)
                     .foregroundStyle(.orange)
                 Text("\(String(format: "%.0f", self.lastWeekAnalysis.totaltimemin)) min (\(String(format: "%.1f", self.lastWeekAnalysis.percent))%)")
-                Text("\(self.lastWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
+                Text("\(self.changeKaomoji(totaltimemin: self.lastWeekAnalysis.totaltimemin))")
                     .font(.largeTitle)
                 ProgressView(value: self.lastWeekAnalysis.totaltimemin,
                              total: self.lastWeekAnalysis.alltimemin)
@@ -79,7 +91,7 @@ struct MyProductView: View {
                     .font(.title3)
                     .foregroundStyle(.green)
                 Text("\(String(format: "%.0f", self.thisWeekAnalysis.totaltimemin)) min (\(String(format: "%.1f", self.thisWeekAnalysis.percent))%)")
-                Text("\(self.thisWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
+                Text("\(self.changeKaomoji(totaltimemin: self.thisWeekAnalysis.totaltimemin))")
                     .font(.largeTitle)
                 ProgressView(value: self.thisWeekAnalysis.totaltimemin,
                              total: self.thisWeekAnalysis.alltimemin)
