@@ -59,10 +59,9 @@ struct MyProductView: View {
             }
             .padding(16.0)
             VStack {
-                Text("Last week")
+                Text(self.lastWeekDate)
                     .font(.title3)
                     .foregroundStyle(.orange)
-                Text(self.lastWeekDate)
                 Text("\(String(format: "%.0f", self.lastWeekAnalysis.totaltimemin)) min (\(String(format: "%.1f", self.lastWeekAnalysis.percent))%)")
                 Text("\(self.lastWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
                     .font(.largeTitle)
@@ -76,10 +75,9 @@ struct MyProductView: View {
                     .stroke(Color.orange, lineWidth: 1)
             }
             VStack {
-                Text("This week")
+                Text(self.thisWeekDate)
                     .font(.title3)
                     .foregroundStyle(.green)
-                Text(self.thisWeekDate)
                 Text("\(String(format: "%.0f", self.thisWeekAnalysis.totaltimemin)) min (\(String(format: "%.1f", self.thisWeekAnalysis.percent))%)")
                 Text("\(self.thisWeekAnalysis.totaltimemin >= 1200 ? "😀" : "😣")")
                     .font(.largeTitle)
