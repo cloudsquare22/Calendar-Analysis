@@ -51,6 +51,10 @@ class EventsModel: ObservableObject {
     }
     
     func actionAnalysis(from: Date, to: Date, calendar: EKCalendar, filterString: String = "") {
+        self.analysis = self.actionAnalysis(from: from, to: to, calendar: calendar, filterString: filterString)
+    }
+
+    func actionAnalysis(from: Date, to: Date, calendar: EKCalendar, filterString: String = "") -> Analysis {
         var fromdc = Calendar.current.dateComponents(in: .current, from: from)
         var todc = Calendar.current.dateComponents(in: .current, from: to)
         fromdc.hour = 0
@@ -80,12 +84,12 @@ class EventsModel: ObservableObject {
         print(fromdc)
         print(todc)
         print("alltime:\(alltime)")
-        self.analysis.totaltimemin = sumtime
-        self.analysis.alltimemin = alltime
-        self.analysis.percent = sumtime / alltime * 100
-        self.analysis.count = count
+        let analysis = Analysis(totaltimemin: sumtime,
+                                alltimemin: alltime,
+                                count: count)
+        return analysis
     }
-    
+
     func thisWeek(interval: Double = 0.0) -> (Date, Date) {
         var resultFrom = Date() - TimeInterval(interval)
         let matchingMonday = DateComponents(weekday: self.firstWeekday)
@@ -159,6 +163,10 @@ class EventsModel: ObservableObject {
 struct Analysis {
     var totaltimemin: Double = 0.0
     var alltimemin: Double = 0.0
-    var percent: Double = 0.0
+    var percent: Double {
+        get {
+            totaltimemin / alltimemin * 100
+        }
+    }
     var count: Int = 0
 }
